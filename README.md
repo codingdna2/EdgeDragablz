@@ -5,9 +5,9 @@ A Mash Up of [HandyControl](https://github.com/HandyOrg/HandyControl) and [Draga
 
 ### Usage
 
-1. Add reference to Nuget packages HandyControl and Dragablz (in this project I've used this [port](https://github.com/highway-it/Dragablz) to .NET Core 
+1. Add reference to Nuget packages [HandyControl](https://www.nuget.org/packages/HandyControl) and [Dragablz](https://www.nuget.org/packages/HIT.Dragablz) (in this project I've used this [port](https://github.com/highway-it/Dragablz) to .NET Core)
 
-2. Copy ResourceDictionary file `TabablzControl.xaml`
+2. Copy ResourceDictionary file `TabablzControl.xaml` to your project
 
 3. Add the following to `App.xaml`
 ```xaml

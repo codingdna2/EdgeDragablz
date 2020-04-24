@@ -39,3 +39,10 @@ A Mash Up of [HandyControl](https://github.com/HandyOrg/HandyControl) and [Draga
         </dragablz:TabablzControl.ContentTemplate>
     </dragablz:TabablzControl>
 ```
+
+### Next developments
+
+1. Better integration of `ScrollViewer`
+2. Inclusion of `TabablzControl` in `NonClientAreaContent`
+3. New item button
+4. Tab tear-off (implementation of `InterTabController`)

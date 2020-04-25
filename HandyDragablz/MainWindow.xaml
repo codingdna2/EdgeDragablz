@@ -13,7 +13,6 @@
         Title="MainWindow" Height="450" Width="800">
 
     <controls:Window.NonClientAreaContent>
-
         <StackPanel Height="29" VerticalAlignment="Center">
             <Menu HorizontalAlignment="Left" Background="Transparent">
                 <MenuItem Header="Dragazbl">
@@ -31,20 +30,24 @@
         <local:MainWindowViewModel />
     </Window.DataContext>
 
-    <dragablz:TabablzControl ItemsSource="{Binding Documents}" SelectedItem="{Binding Document}" Style="{StaticResource HandyTabablzStyle}" ShowDefaultCloseButton="True" >
-        <!--<dragablz:TabablzControl.InterTabController>
-            <dragablz:InterTabController  />
-        </dragablz:TabablzControl.InterTabController>-->
+    <dragablz:TabablzControl x:Name="Tabs" ItemsSource="{Binding Documents}" SelectedItem="{Binding Document}" Style="{StaticResource HandyTabablzStyle}" ShowDefaultCloseButton="True" >
+
+        <dragablz:TabablzControl.InterTabController>
+            <dragablz:InterTabController/>
+        </dragablz:TabablzControl.InterTabController>
+        
         <dragablz:TabablzControl.HeaderItemTemplate>
             <DataTemplate DataType="{x:Type local:Document}">
                 <TextBlock Text="{Binding Header}" />
             </DataTemplate>
         </dragablz:TabablzControl.HeaderItemTemplate>
+        
         <dragablz:TabablzControl.ContentTemplate>
             <DataTemplate DataType="{x:Type local:Document}">
                 <Border Background="{Binding Background}" />
             </DataTemplate>
         </dragablz:TabablzControl.ContentTemplate>
+        
     </dragablz:TabablzControl>
 
 </controls:Window>

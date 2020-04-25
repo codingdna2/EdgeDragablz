@@ -21,7 +21,7 @@ A Mash Up of [HandyControl](https://github.com/HandyOrg/HandyControl) and [Draga
     </ResourceDictionary>
 </Application.Resources>
 ```
-4. Add the following to `MainWindows.xaml`
+4. Add the following to `MainWindow.xaml`
 ```xaml
     <dragablz:TabablzControl ItemsSource="{Binding Documents}" 
                              SelectedItem="{Binding Document}" 

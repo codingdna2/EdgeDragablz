@@ -30,7 +30,8 @@
         <local:MainWindowViewModel />
     </Window.DataContext>
 
-    <dragablz:TabablzControl x:Name="Tabs" ItemsSource="{Binding Documents}" SelectedItem="{Binding Document}" Style="{StaticResource HandyTabablzStyle}" ShowDefaultCloseButton="True" >
+    <dragablz:TabablzControl x:Name="Tabs" ItemsSource="{Binding Documents}" SelectedItem="{Binding Document}"
+                             Style="{StaticResource HandyTabablzStyle}" ShowDefaultCloseButton="True">
 
         <dragablz:TabablzControl.InterTabController>
             <dragablz:InterTabController/>
@@ -46,7 +47,7 @@
                             <MenuItem Command="{x:Static dragablz:TabablzControl.CloseOtherItemsCommand}"/>
                         </ContextMenu>
                     </Grid.ContextMenu>
-                    <TextBlock Text="{Binding Header}" />
+                    <TextBlock Text="{Binding Header}" MaxWidth="100" TextTrimming="CharacterEllipsis" ToolTip="{Binding Header}" />
                 </Grid>
             </DataTemplate>
         </dragablz:TabablzControl.HeaderItemTemplate>

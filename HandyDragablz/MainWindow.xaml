@@ -28,8 +28,26 @@
 
     <Window.Resources>
         <Style TargetType="{x:Type dragablz:TabablzControl}" BasedOn="{StaticResource HandyTabablzStyle}" x:Key="TabStyle">
-            <!--<Setter Property="HeaderPrefixContent" Value="PREFIX" />
-            <Setter Property="HeaderSuffixContent" Value="SUFFIX" />-->
+            <!--<Setter Property="HeaderPrefixContent">
+                <Setter.Value>
+                    <ContentControl>
+                        <Button Width="35" Style="{StaticResource ButtonCustom}">
+                            <Path Width="16" Height="15" Data="F1 M 80.000000 -55.000000 L 0.000000 -55.000000 L 0.000000 -60.000000 L 80.000000 -60.000000 L 80.000000 -55.000000 Z M 80.000000 -15.000000 L 0.000000 -15.000000 L 0.000000 -20.000000 L 80.000000 -20.000000 L 80.000000 -15.000000 Z M 80.000000 -35.000000 L 0.000000 -35.000000 L 0.000000 -40.000000 L 80.000000 -40.000000 L 80.000000 -35.000000 Z " Fill="{StaticResource PrimaryTextBrush}" Stretch="Uniform" />
+                        </Button>
+                    </ContentControl>
+                </Setter.Value>
+            </Setter>-->
+            <Setter Property="HeaderSuffixContent">
+                <Setter.Value>
+                    <ContentControl>
+                        <Button Style="{StaticResource ButtonCustom}" Margin="8,0,8,0" Command="{Binding AddCommand}">
+                            <Button.Content>
+                                <Path Height="12" Width="12" Data="F1 M 80.000000 -42.500000 L 80.000000 -37.500000 L 42.500000 -37.500000 L 42.500000 0.000000 L 37.500000 0.000000 L 37.500000 -37.500000 L 0.000000 -37.500000 L 0.000000 -42.500000 L 37.500000 -42.500000 L 37.500000 -80.000000 L 42.500000 -80.000000 L 42.500000 -42.500000 Z " Fill="{StaticResource PrimaryTextBrush}" Stretch="Uniform" />
+                            </Button.Content>
+                        </Button>
+                    </ContentControl>
+                </Setter.Value>
+            </Setter>
         </Style>
     </Window.Resources>
 

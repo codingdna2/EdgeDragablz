@@ -206,13 +206,15 @@
                                 </Grid.ColumnDefinitions>
 
                                 <!-- PREFIX -->
-                                <ContentControl Grid.Column="0" x:Name="PrefixContentControl" 
-                                            VerticalAlignment="Center"
-                                            Content="{TemplateBinding HeaderPrefixContent}"
-                                            ContentStringFormat="{TemplateBinding HeaderPrefixContentStringFormat}"
-                                            ContentTemplate="{TemplateBinding HeaderPrefixContentStringFormat}"
-                                            ContentTemplateSelector="{TemplateBinding HeaderPrefixContentTemplateSelector}"/>
-
+                                <Border x:Name="PrefixBorder" BorderThickness="0,0,1,0" BorderBrush="{TemplateBinding BorderBrush}" Grid.Column="0">
+                                    <ContentControl  x:Name="PrefixContentControl" 
+                                                VerticalAlignment="Center"
+                                                Content="{TemplateBinding HeaderPrefixContent}"
+                                                ContentStringFormat="{TemplateBinding HeaderPrefixContentStringFormat}"
+                                                ContentTemplate="{TemplateBinding HeaderPrefixContentStringFormat}"
+                                                ContentTemplateSelector="{TemplateBinding HeaderPrefixContentTemplateSelector}"/>
+                                </Border>
+                                
                                 <!-- ITEMS CONTROL -->
                                 <dragablz:DragablzItemsControl x:Name="PART_HeaderItemsControl" Grid.Column="1" Background="Red"
                                                             ItemContainerStyle="{TemplateBinding ItemContainerStyle}" 
@@ -240,7 +242,7 @@
                                 <Button Style="{StaticResource ButtonCustom}"
                                     x:Name="DefaultAddButton"
                                     Grid.Column="2"
-                                        Margin="8,0,8,0"
+                                    Margin="8,0,8,0"
                                     Command="{x:Static dragablz:TabablzControl.AddItemCommand}"
                                     Visibility="{TemplateBinding ShowDefaultAddButton, Converter={StaticResource BooleanToVisibilityConverter}}">
                                     <Button.Content>
@@ -251,11 +253,11 @@
                                 <!-- SUFFIX -->
                                 <ContentControl Grid.Column="3" x:Name="SuffixContentControl" 
                                             VerticalAlignment="Center"
-                                            Content="{TemplateBinding HeaderSuffixContent}"
+                                                HorizontalAlignment="Left"
+                                                Content="{TemplateBinding HeaderSuffixContent}"
                                             ContentStringFormat="{TemplateBinding HeaderSuffixContentStringFormat}"
                                             ContentTemplate="{TemplateBinding HeaderSuffixContentStringFormat}"
-                                            ContentTemplateSelector="{TemplateBinding HeaderSuffixContentTemplateSelector}"                                            
-                                            HorizontalAlignment="Stretch"
+                                            ContentTemplateSelector="{TemplateBinding HeaderSuffixContentTemplateSelector}"                                                                                        
                                             />
                             </Grid>
 
@@ -267,6 +269,9 @@
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
+                        <Trigger SourceName="PrefixContentControl" Property="Content" Value="{x:Null}">
+                            <Setter TargetName="PrefixBorder" Property="Visibility" Value="Collapsed"/>
+                        </Trigger>
                         <Trigger Property="IsHeaderPanelVisible" Value="False">
                             <Setter Property="Margin" TargetName="contentPanel" Value="0 0 0 0"/>
                         </Trigger>

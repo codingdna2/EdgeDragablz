@@ -19,13 +19,19 @@
                  mc:Ignorable="d">
 
     <controls:Window.NonClientAreaContent>
-        <StackPanel Height="29" VerticalAlignment="Center">
-            <Menu HorizontalAlignment="Left" Background="Transparent">
-                <MenuItem Header="EdgeDragablz">
-                    <MenuItem Command="{Binding AddCommand}" Header="Add" />
-                </MenuItem>
-            </Menu>
-        </StackPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="1"
+                    HorizontalAlignment="Right"
+                    controls:IconElement.Geometry="{StaticResource SettingsGeometry}"
+                    controls:IconElement.Height="16"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    Foreground="Black" />
+        </Grid>
     </controls:Window.NonClientAreaContent>
 
     <Window.Resources>

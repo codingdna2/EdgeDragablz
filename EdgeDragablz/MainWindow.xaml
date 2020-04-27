@@ -19,19 +19,14 @@
                  mc:Ignorable="d">
 
     <controls:Window.NonClientAreaContent>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            <Button Grid.Column="1"
-                    HorizontalAlignment="Right"
+        <DockPanel>
+            <Button HorizontalAlignment="Right"
                     controls:IconElement.Geometry="{StaticResource SettingsGeometry}"
                     controls:IconElement.Height="16"
                     Background="Transparent"
                     BorderBrush="Transparent"
                     Foreground="Black" />
-        </Grid>
+        </DockPanel>
     </controls:Window.NonClientAreaContent>
 
     <Window.Resources>
@@ -41,7 +36,9 @@
             <Setter Property="HeaderPrefixContent">
                 <Setter.Value>
                     <ContentControl>
-                        <Button Width="35" Style="{StaticResource ButtonCustom}">
+                        <Button Width="35"
+                                FocusVisualStyle="{x:Null}"
+                                Style="{StaticResource ButtonCustom}">
                             <Path Width="16"
                                   Height="15"
                                   Data="F1 M 80.000000 -55.000000 L 0.000000 -55.000000 L 0.000000 -60.000000 L 80.000000 -60.000000 L 80.000000 -55.000000 Z M 80.000000 -15.000000 L 0.000000 -15.000000 L 0.000000 -20.000000 L 80.000000 -20.000000 L 80.000000 -15.000000 Z M 80.000000 -35.000000 L 0.000000 -35.000000 L 0.000000 -40.000000 L 80.000000 -40.000000 L 80.000000 -35.000000 Z "
@@ -69,24 +66,20 @@
                                     VerticalAlignment="Stretch"
                                     controls:IconElement.Geometry="{StaticResource AddGeometry}"
                                     controls:IconElement.Width="12"
-                                    Background="Transparent"
-                                    BorderBrush="Transparent"
-                                    BorderThickness="0"
-                                    Command="{Binding AddCommand}" />
+                                    Command="{Binding AddCommand}"
+                                    Foreground="{StaticResource PrimaryTextBrush}"
+                                    Style="{StaticResource ButtonIcon}" />
                             <Button Grid.Column="2"
                                     Width="{StaticResource HeaderButtonWidth}"
                                     Margin="0,0,4,0"
                                     Padding="0"
                                     HorizontalAlignment="Right"
-                                    VerticalAlignment="Stretch"
                                     controls:IconElement.Geometry="{StaticResource FullScreenGeometry}"
                                     controls:IconElement.Width="12"
-                                    Background="Transparent"
-                                    BorderBrush="Transparent"
-                                    BorderThickness="0"
                                     Command="{Binding SwitchFullScreenCommand}"
                                     DockPanel.Dock="Right"
                                     Foreground="{StaticResource PrimaryTextBrush}"
+                                    Style="{StaticResource ButtonIcon}"
                                     Visibility="{Binding IsFullScreen, Converter={StaticResource FalseBooleanToVisibilityConverter}}" />
                             <Button Grid.Column="2"
                                     Width="{StaticResource HeaderButtonWidth}"
@@ -95,9 +88,6 @@
                                     HorizontalAlignment="Right"
                                     controls:IconElement.Geometry="{StaticResource ExitFullScreenGeometry}"
                                     controls:IconElement.Width="12"
-                                    Background="Transparent"
-                                    BorderBrush="Transparent"
-                                    BorderThickness="0"
                                     Command="{Binding SwitchFullScreenCommand}"
                                     DockPanel.Dock="Right"
                                     Foreground="{StaticResource PrimaryTextBrush}"

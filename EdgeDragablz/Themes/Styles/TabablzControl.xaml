@@ -24,9 +24,12 @@
 
     <Style x:Key="ButtonCustom" TargetType="Button">
         <Setter Property="Background" Value="{x:Null}" />
+        <Setter Property="BorderBrush" Value="{x:Null}" />
+        <Setter Property="Foreground" Value="{StaticResource PrimaryTextBrush}" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Padding" Value="0" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Height" Value="{StaticResource HeaderHeight}" />
         <Setter Property="Width" Value="{StaticResource HeaderButtonWidth}" />

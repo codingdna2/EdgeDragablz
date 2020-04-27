@@ -10,6 +10,7 @@
     <PackageReference Include="HandyControl" Version="2.4.0" />
     <PackageReference Include="HIT.Dragablz" Version="1.0.2" />
     <PackageReference Include="Prism.Core" Version="7.2.0.1422" />
+    <PackageReference Include="Prism.DryIoc" Version="7.2.0.1422" />
   </ItemGroup>
 
 </Project>

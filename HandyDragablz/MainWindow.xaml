@@ -5,8 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
         xmlns:controls="https://handyorg.github.io/handycontrol"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:vm="clr-namespace:HandyDragablz.ViewModels"
         xmlns:local="clr-namespace:HandyDragablz"
+        xmlns:prism="http://prismlibrary.com/"
         mc:Ignorable="d"
+        prism:ViewModelLocator.AutoWireViewModel="True"
         ShowTitle="False"
         SnapsToDevicePixels="True"
         UseLayoutRounding="True"
@@ -23,22 +27,15 @@
         </StackPanel>
     </controls:Window.NonClientAreaContent>
 
-    <Window.Resources>
-    </Window.Resources>
-
-    <Window.DataContext>
-        <local:MainWindowViewModel />
-    </Window.DataContext>
-
-    <dragablz:TabablzControl x:Name="Tabs" ItemsSource="{Binding Documents}" SelectedItem="{Binding Document}"
+    <dragablz:TabablzControl x:Name="Tabs" prism:RegionManager.RegionName="{x:Static local:RegionHelper.RegionName}"
                              Style="{StaticResource HandyTabablzStyle}" ShowDefaultCloseButton="True">
-
+        
         <dragablz:TabablzControl.InterTabController>
-            <dragablz:InterTabController/>
+            <dragablz:InterTabController InterTabClient="{Binding InterTabClient}"/>
         </dragablz:TabablzControl.InterTabController>
         
         <dragablz:TabablzControl.HeaderItemTemplate>
-            <DataTemplate DataType="{x:Type local:Document}">
+            <DataTemplate DataType="{x:Type vm:DocumentViewModel}">
                 <Grid>
                     <Grid.ContextMenu>
                         <ContextMenu>
@@ -47,17 +44,11 @@
                             <MenuItem Command="{x:Static dragablz:TabablzControl.CloseOtherItemsCommand}"/>
                         </ContextMenu>
                     </Grid.ContextMenu>
-                    <TextBlock Text="{Binding Header}" MaxWidth="100" TextTrimming="CharacterEllipsis" ToolTip="{Binding Header}" />
+                    <TextBlock Text="{Binding DataContext.Header}" MaxWidth="100" TextTrimming="CharacterEllipsis" ToolTip="{Binding DataContext.Header}" />
                 </Grid>
             </DataTemplate>
         </dragablz:TabablzControl.HeaderItemTemplate>
-        
-        <dragablz:TabablzControl.ContentTemplate>
-            <DataTemplate DataType="{x:Type local:Document}">
-                <Border Background="{Binding Background}" />
-            </DataTemplate>
-        </dragablz:TabablzControl.ContentTemplate>
-        
+                
     </dragablz:TabablzControl>
 
 </controls:Window>

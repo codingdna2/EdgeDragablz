@@ -78,4 +78,3 @@ Usage with Prism is fairly more complex. Please refer to sample code to correctl
 
 1. Better integration of `ScrollViewer`
 2. Inclusion of `TabablzControl` in `NonClientAreaContent`
-3. New item button

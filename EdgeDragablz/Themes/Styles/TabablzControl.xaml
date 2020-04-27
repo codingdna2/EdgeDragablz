@@ -325,7 +325,7 @@
                                                                ItemsOrganiser="{TemplateBinding HeaderItemsOrganiser}"
                                                                ItemsSource="{Binding Items, RelativeSource={RelativeSource TemplatedParent}}"
                                                                KeyboardNavigation.TabIndex="1"
-                                                               Style="{StaticResource UniformGridItemsControlStyle}">
+                                                               Style="{StaticResource CanvasItemsControlStyle}">
 
                                     <dragablz:DragablzItemsControl.MaxWidth>
                                         <MultiBinding>

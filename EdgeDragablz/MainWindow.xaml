@@ -100,6 +100,7 @@
                           Stretch="Uniform" />
 
                     <TextBlock Grid.Column="1"
+                               MaxWidth="200"
                                HorizontalAlignment="Stretch"
                                Text="{Binding DataContext.Header}"
                                TextTrimming="CharacterEllipsis"

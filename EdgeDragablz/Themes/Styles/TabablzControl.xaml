@@ -176,7 +176,7 @@
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="MinHeight" Value="{StaticResource HeaderHeight}" />
-        <Setter Property="MinWidth" Value="180" />
+        <Setter Property="MaxWidth" Value="200" />
 
         <Setter Property="Template">
             <Setter.Value>

@@ -3,7 +3,7 @@ A Mash Up of [HandyControl](https://github.com/HandyOrg/HandyControl) and [Draga
 
 ![Screenshot](Screenshots/sample1.png)
 
-### Usage (without Prism)
+### Usage
 
 1. Add reference to NuGet packages [HandyControl](https://www.nuget.org/packages/HandyControl) and [Dragablz](https://www.nuget.org/packages/HIT.Dragablz) (in this project I've used this [port](https://github.com/highway-it/Dragablz) to .NET Core)
 
@@ -16,11 +16,14 @@ A Mash Up of [HandyControl](https://github.com/HandyOrg/HandyControl) and [Draga
         <ResourceDictionary.MergedDictionaries>
             <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml"/>
             <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml"/>
-            <ResourceDictionary Source="TabablzControl.xaml"/>
+            <ResourceDictionary Source="Themes/Styles/TabablzControl.xaml"/>
         </ResourceDictionary.MergedDictionaries>
     </ResourceDictionary>
 </Application.Resources>
 ```
+
+### Databinding
+
 4. Add the following to `MainWindow.xaml`
 ```xaml
     <dragablz:TabablzControl ItemsSource="{Binding Documents}" 
@@ -38,6 +41,37 @@ A Mash Up of [HandyControl](https://github.com/HandyOrg/HandyControl) and [Draga
             </DataTemplate>
         </dragablz:TabablzControl.ContentTemplate>
     </dragablz:TabablzControl>
+```
+
+### Prism
+
+Usage with Prism is fairly more complex. Please refer to sample code to correctly implement `App.xaml.cs`, `MainWindowViewModel` and `RegionAdapter`.
+
+4. Add the following to `MainWindow.xaml`
+```xaml
+<dragablz:TabablzControl x:Name="Tabs" prism:RegionManager.RegionName="{x:Static local:RegionHelper.RegionName}"
+                            Style="{StaticResource HandyTabablzStyle}" ShowDefaultCloseButton="True">
+        
+    <dragablz:TabablzControl.InterTabController>
+        <dragablz:InterTabController InterTabClient="{Binding InterTabClient}"/>
+    </dragablz:TabablzControl.InterTabController>
+        
+    <dragablz:TabablzControl.HeaderItemTemplate>
+        <DataTemplate DataType="{x:Type vm:DocumentViewModel}">
+            <Grid>
+                <Grid.ContextMenu>
+                    <ContextMenu>
+                        <!--we'll be in a popup, so give dragablz a hint as to what tab header content needs closing -->
+                        <MenuItem Command="{x:Static dragablz:TabablzControl.CloseItemCommand}"/>
+                        <MenuItem Command="{x:Static dragablz:TabablzControl.CloseOtherItemsCommand}"/>
+                    </ContextMenu>
+                </Grid.ContextMenu>
+                <TextBlock Text="{Binding DataContext.Header}" MaxWidth="100" TextTrimming="CharacterEllipsis" ToolTip="{Binding DataContext.Header}" />
+            </Grid>
+        </DataTemplate>
+    </dragablz:TabablzControl.HeaderItemTemplate>
+                
+</dragablz:TabablzControl>
 ```
 
 ### Next developments

@@ -29,9 +29,7 @@
                                   ShadowDepth="2"
                                   Color="#FFB8B9B9" />
             </Border.Effect>
-
             <DockPanel>
-
                 <Button Margin="0,0,8,0"
                         HorizontalAlignment="Left"
                         controls:IconElement.Geometry="{StaticResource BackGeometry}"
@@ -39,11 +37,9 @@
                         Background="Transparent"
                         BorderBrush="Transparent"
                         DockPanel.Dock="Left"
-                        IsEnabled="False"
                         Foreground="{StaticResource PrimaryTextBrush}"
+                        IsEnabled="False"
                         Style="{StaticResource ButtonIcon}" />
-
-
                 <Button Margin="0,0,8,0"
                         HorizontalAlignment="Right"
                         controls:IconElement.Geometry="{StaticResource ThreeDotsGeometry}"
@@ -65,7 +61,6 @@
                         BorderBrush="Transparent"
                         DockPanel.Dock="Right"
                         Foreground="{StaticResource PrimaryTextBrush}" />
-
             </DockPanel>
         </Border>
         <Grid Grid.Row="1"

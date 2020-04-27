@@ -4,7 +4,6 @@
                  xmlns:controls="https://handyorg.github.io/handycontrol"
                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                  xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
-                 xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
                  xmlns:local="clr-namespace:EdgeDragablz"
                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                  xmlns:prism="http://prismlibrary.com/"
@@ -72,49 +71,50 @@
         </Style>
     </Window.Resources>
 
-    <dragablz:TabablzControl x:Name="Tabs"
-                             prism:RegionManager.RegionName="{x:Static local:RegionHelper.RegionName}"
-                             ShowDefaultCloseButton="True"
-                             Style="{StaticResource TabStyle}">
+    <Grid>
+        <dragablz:TabablzControl x:Name="Tabs"
+                                 prism:RegionManager.RegionName="{x:Static local:RegionHelper.RegionName}"
+                                 ShowDefaultCloseButton="True"
+                                 Style="{StaticResource TabStyle}">
 
-        <dragablz:TabablzControl.InterTabController>
-            <dragablz:InterTabController InterTabClient="{Binding InterTabClient}" />
-        </dragablz:TabablzControl.InterTabController>
+            <dragablz:TabablzControl.InterTabController>
+                <dragablz:InterTabController InterTabClient="{Binding InterTabClient}" />
+            </dragablz:TabablzControl.InterTabController>
 
-        <dragablz:TabablzControl.HeaderItemTemplate>
-            <DataTemplate DataType="{x:Type vm:DocumentViewModel}">
-                <Grid>
+            <dragablz:TabablzControl.HeaderItemTemplate>
+                <DataTemplate DataType="{x:Type vm:DocumentViewModel}">
+                    <Grid>
 
-                    <Grid.ContextMenu>
-                        <ContextMenu>
-                            <MenuItem Command="{x:Static dragablz:TabablzControl.CloseItemCommand}" />
-                            <MenuItem Command="{x:Static dragablz:TabablzControl.CloseOtherItemsCommand}" />
-                            <MenuItem Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=DataContext.CloseAllCommand}" Header="Close all" />
-                        </ContextMenu>
-                    </Grid.ContextMenu>
+                        <Grid.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Command="{x:Static dragablz:TabablzControl.CloseItemCommand}" />
+                                <MenuItem Command="{x:Static dragablz:TabablzControl.CloseOtherItemsCommand}" />
+                                <MenuItem Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=DataContext.CloseAllCommand}" Header="Close all" />
+                            </ContextMenu>
+                        </Grid.ContextMenu>
 
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
 
-                    <Path Width="16"
-                          Height="15"
-                          Margin="0,0,8,0"
-                          Data="F1 M 80.000000 -75.000000 L 80.000000 -10.000000 L 0.000000 -10.000000 L 0.000000 -75.000000 Z M 5.000000 -70.000000 L 5.000000 -60.000000 L 75.000000 -60.000000 L 75.000000 -70.000000 Z M 75.000000 -15.000000 L 75.000000 -55.000000 L 5.000000 -55.000000 L 5.000000 -15.000000 Z M 10.000000 -45.000000 L 15.000000 -45.000000 L 15.000000 -20.000000 L 10.000000 -20.000000 Z M 20.000000 -30.000000 L 25.000000 -30.000000 L 25.000000 -20.000000 L 20.000000 -20.000000 Z M 30.000000 -35.000000 L 35.000000 -35.000000 L 35.000000 -20.000000 L 30.000000 -20.000000 Z M 40.000000 -50.000000 L 45.000000 -50.000000 L 45.000000 -20.000000 L 40.000000 -20.000000 Z M 60.000000 -45.000000 L 65.000000 -45.000000 L 65.000000 -20.000000 L 60.000000 -20.000000 Z M 50.000000 -35.000000 L 55.000000 -35.000000 L 55.000000 -20.000000 L 50.000000 -20.000000 Z"
-                          Fill="Black"
-                          Stretch="Uniform" />
+                        <Path Width="16"
+                              Height="15"
+                              Margin="0,0,8,0"
+                              Data="F1 M 80.000000 -75.000000 L 80.000000 -10.000000 L 0.000000 -10.000000 L 0.000000 -75.000000 Z M 5.000000 -70.000000 L 5.000000 -60.000000 L 75.000000 -60.000000 L 75.000000 -70.000000 Z M 75.000000 -15.000000 L 75.000000 -55.000000 L 5.000000 -55.000000 L 5.000000 -15.000000 Z M 10.000000 -45.000000 L 15.000000 -45.000000 L 15.000000 -20.000000 L 10.000000 -20.000000 Z M 20.000000 -30.000000 L 25.000000 -30.000000 L 25.000000 -20.000000 L 20.000000 -20.000000 Z M 30.000000 -35.000000 L 35.000000 -35.000000 L 35.000000 -20.000000 L 30.000000 -20.000000 Z M 40.000000 -50.000000 L 45.000000 -50.000000 L 45.000000 -20.000000 L 40.000000 -20.000000 Z M 60.000000 -45.000000 L 65.000000 -45.000000 L 65.000000 -20.000000 L 60.000000 -20.000000 Z M 50.000000 -35.000000 L 55.000000 -35.000000 L 55.000000 -20.000000 L 50.000000 -20.000000 Z"
+                              Fill="Black"
+                              Stretch="Uniform" />
 
-                    <TextBlock Grid.Column="1"
-                               MaxWidth="200"
-                               HorizontalAlignment="Stretch"
-                               Text="{Binding DataContext.Header}"
-                               TextTrimming="CharacterEllipsis"
-                               ToolTip="{Binding DataContext.Header}" />
-                </Grid>
-            </DataTemplate>
-        </dragablz:TabablzControl.HeaderItemTemplate>
+                        <TextBlock Grid.Column="1"
+                                   MaxWidth="200"
+                                   HorizontalAlignment="Stretch"
+                                   Text="{Binding DataContext.Header}"
+                                   TextTrimming="CharacterEllipsis"
+                                   ToolTip="{Binding DataContext.Header}" />
+                    </Grid>
+                </DataTemplate>
+            </dragablz:TabablzControl.HeaderItemTemplate>
 
-    </dragablz:TabablzControl>
-
+        </dragablz:TabablzControl>
+    </Grid>
 </controls:Window>

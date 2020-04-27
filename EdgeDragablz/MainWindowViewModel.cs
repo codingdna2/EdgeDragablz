@@ -2,14 +2,16 @@
 using Dragablz;
 using EdgeDragablz.Views;
 using Prism.Commands;
+using Prism.Mvvm;
 using Prism.Regions;
 using System;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows.Input;
 
 namespace EdgeDragablz
 {
-    public class MainWindowViewModel
+    public class MainWindowViewModel : BindableBase
     {
         private readonly IRegionManager regionManager;
 
@@ -29,8 +31,6 @@ namespace EdgeDragablz
         public ICommand AddCommand { get; }
 
         public ICommand CloseAllCommand { get; }
-
-        public static Func<HomeView> Factory => () => ServiceLocator.Current.GetInstance<HomeView>();
 
         private void Navigate(string navigatePath)
         {

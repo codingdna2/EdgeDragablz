@@ -1,7 +1,7 @@
 # HandyDragablz
 A Mash Up of [HandyControl](https://github.com/HandyOrg/HandyControl) and [Dragablz](https://github.com/ButchersBoy/Dragablz)
 
-![Screenshot](Screenshots/sample1.png)
+![Screenshot](Screenshots/sample2.png)
 
 ### Usage
 

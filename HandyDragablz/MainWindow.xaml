@@ -19,7 +19,7 @@
     <controls:Window.NonClientAreaContent>
         <StackPanel Height="29" VerticalAlignment="Center">
             <Menu HorizontalAlignment="Left" Background="Transparent">
-                <MenuItem Header="Dragazbl">
+                <MenuItem Header="HandyDragablz">
                     <MenuItem Command="{Binding AddCommand}" Header="Add" />
                 </MenuItem>
             </Menu>

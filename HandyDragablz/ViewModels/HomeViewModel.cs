@@ -1,4 +1,4 @@
-﻿namespace HandyDragablz.ViewModels
+﻿namespace EdgeDragablz.ViewModels
 {
     public class HomeViewModel : DocumentViewModel
     {

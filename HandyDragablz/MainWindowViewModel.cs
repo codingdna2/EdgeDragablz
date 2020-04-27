@@ -1,13 +1,13 @@
 ﻿using CommonServiceLocator;
 using Dragablz;
-using HandyDragablz.Views;
+using EdgeDragablz.Views;
 using Prism.Commands;
 using Prism.Regions;
 using System;
 using System.Linq;
 using System.Windows.Input;
 
-namespace HandyDragablz
+namespace EdgeDragablz
 {
     public class MainWindowViewModel
     {

@@ -1,14 +1,14 @@
-﻿<controls:Window x:Class="HandyDragablz.MainWindow"
+﻿<controls:Window x:Class="EdgeDragablz.MainWindow"
                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                  xmlns:controls="https://handyorg.github.io/handycontrol"
                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                  xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
                  xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-                 xmlns:local="clr-namespace:HandyDragablz"
+                 xmlns:local="clr-namespace:EdgeDragablz"
                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                  xmlns:prism="http://prismlibrary.com/"
-                 xmlns:vm="clr-namespace:HandyDragablz.ViewModels"
+                 xmlns:vm="clr-namespace:EdgeDragablz.ViewModels"
                  Title="MainWindow"
                  Width="800"
                  Height="450"
@@ -21,7 +21,7 @@
     <controls:Window.NonClientAreaContent>
         <StackPanel Height="29" VerticalAlignment="Center">
             <Menu HorizontalAlignment="Left" Background="Transparent">
-                <MenuItem Header="HandyDragablz">
+                <MenuItem Header="EdgeDragablz">
                     <MenuItem Command="{Binding AddCommand}" Header="Add" />
                 </MenuItem>
             </Menu>
@@ -30,17 +30,21 @@
 
     <Window.Resources>
         <Style x:Key="TabStyle"
-               BasedOn="{StaticResource HandyTabablzStyle}"
+               BasedOn="{StaticResource TabablzEdgeStyle}"
                TargetType="{x:Type dragablz:TabablzControl}">
-            <!--<Setter Property="HeaderPrefixContent">
+            <Setter Property="HeaderPrefixContent">
                 <Setter.Value>
                     <ContentControl>
                         <Button Width="35" Style="{StaticResource ButtonCustom}">
-                            <Path Width="16" Height="15" Data="F1 M 80.000000 -55.000000 L 0.000000 -55.000000 L 0.000000 -60.000000 L 80.000000 -60.000000 L 80.000000 -55.000000 Z M 80.000000 -15.000000 L 0.000000 -15.000000 L 0.000000 -20.000000 L 80.000000 -20.000000 L 80.000000 -15.000000 Z M 80.000000 -35.000000 L 0.000000 -35.000000 L 0.000000 -40.000000 L 80.000000 -40.000000 L 80.000000 -35.000000 Z " Fill="{StaticResource PrimaryTextBrush}" Stretch="Uniform" />
+                            <Path Width="16"
+                                  Height="15"
+                                  Data="F1 M 80.000000 -55.000000 L 0.000000 -55.000000 L 0.000000 -60.000000 L 80.000000 -60.000000 L 80.000000 -55.000000 Z M 80.000000 -15.000000 L 0.000000 -15.000000 L 0.000000 -20.000000 L 80.000000 -20.000000 L 80.000000 -15.000000 Z M 80.000000 -35.000000 L 0.000000 -35.000000 L 0.000000 -40.000000 L 80.000000 -40.000000 L 80.000000 -35.000000 Z "
+                                  Fill="{StaticResource PrimaryTextBrush}"
+                                  Stretch="Uniform" />
                         </Button>
                     </ContentControl>
                 </Setter.Value>
-            </Setter>-->
+            </Setter>
             <Setter Property="HeaderSuffixContent">
                 <Setter.Value>
                     <ContentControl>

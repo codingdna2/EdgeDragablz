@@ -1,6 +1,6 @@
 ﻿using Prism.Regions;
 
-namespace HandyDragablz
+namespace EdgeDragablz
 {
     public static class RegionHelper
     {

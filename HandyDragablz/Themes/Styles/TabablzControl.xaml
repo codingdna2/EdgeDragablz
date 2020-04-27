@@ -3,7 +3,7 @@
                     xmlns:controls="https://handyorg.github.io/handycontrol"
                     xmlns:converters="clr-namespace:Dragablz.Converters;assembly=Dragablz"
                     xmlns:dragablz="http://dragablz.net/winfx/xaml/dragablz"
-                    xmlns:local="clr-namespace:HandyDragablz"
+                    xmlns:local="clr-namespace:EdgeDragablz"
                     xmlns:system="clr-namespace:System;assembly=System.Runtime">
 
     <converters:ShowDefaultCloseButtonConverter x:Key="ShowDefaultCloseButtonConverter" />
@@ -110,7 +110,7 @@
         </Grid>
     </ControlTemplate>
 
-    <Style x:Key="HandyTabablzDragablzItemsControlStyle" TargetType="{x:Type dragablz:DragablzItemsControl}">
+    <Style x:Key="CanvasItemsControlStyle" TargetType="{x:Type dragablz:DragablzItemsControl}">
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Top" />
         <Setter Property="ItemsPanel">
@@ -142,7 +142,30 @@
         </Setter>
     </Style>
 
-    <Style x:Key="HandyDragablzTabItemStyle" TargetType="{x:Type dragablz:DragablzItem}">
+    <Style x:Key="UniformGridItemsControlStyle" TargetType="{x:Type dragablz:DragablzItemsControl}">
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <UniformGrid IsItemsHost="True" Rows="1" />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type dragablz:DragablzItemsControl}">
+                    <ItemsPresenter Width="{TemplateBinding ActualWidth}"
+                                    Height="{TemplateBinding ItemsPresenterHeight}"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Top"
+                                    SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="TabItemEdgeStyle" TargetType="{x:Type dragablz:DragablzItem}">
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
         <Setter Property="Background" Value="{StaticResource SecondaryRegionBrush}" />
@@ -245,14 +268,14 @@
         </Setter>
     </Style>
 
-    <Style x:Key="HandyTabablzStyle" TargetType="{x:Type dragablz:TabablzControl}">
+    <Style x:Key="TabablzEdgeStyle" TargetType="{x:Type dragablz:TabablzControl}">
         <Setter Property="Padding" Value="0" />
         <Setter Property="Background" Value="{DynamicResource SecondaryRegionBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="ItemContainerStyle" Value="{StaticResource HandyDragablzTabItemStyle}" />
+        <Setter Property="ItemContainerStyle" Value="{StaticResource TabItemEdgeStyle}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type dragablz:TabablzControl}">
@@ -315,7 +338,7 @@
                                                                ItemsOrganiser="{TemplateBinding HeaderItemsOrganiser}"
                                                                ItemsSource="{Binding Items, RelativeSource={RelativeSource TemplatedParent}}"
                                                                KeyboardNavigation.TabIndex="1"
-                                                               Style="{StaticResource HandyTabablzDragablzItemsControlStyle}">
+                                                               Style="{StaticResource UniformGridItemsControlStyle}">
 
                                     <dragablz:DragablzItemsControl.MaxWidth>
                                         <MultiBinding>

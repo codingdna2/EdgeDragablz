@@ -2,7 +2,7 @@
 using Dragablz;
 using System.Windows;
 
-namespace HandyDragablz
+namespace EdgeDragablz
 {
     public class InterTabClient : IInterTabClient
     {

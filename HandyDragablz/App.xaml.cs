@@ -1,10 +1,10 @@
 ﻿using Dragablz;
-using HandyDragablz.Views;
+using EdgeDragablz.Views;
 using Prism.Ioc;
 using Prism.Regions;
 using System.Windows;
 
-namespace HandyDragablz
+namespace EdgeDragablz
 {
     /// <summary>
     /// Interaction logic for App.xaml

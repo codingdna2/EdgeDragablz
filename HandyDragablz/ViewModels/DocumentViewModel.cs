@@ -2,7 +2,7 @@
 using Prism.Regions;
 using System;
 
-namespace HandyDragablz.ViewModels
+namespace EdgeDragablz.ViewModels
 {
     public abstract class DocumentViewModel : BindableBase, IConfirmNavigationRequest
     {

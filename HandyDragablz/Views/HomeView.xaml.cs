@@ -11,7 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace HandyDragablz.Views
+namespace EdgeDragablz.Views
 {
     /// <summary>
     /// Interaction logic for HomeView.xaml

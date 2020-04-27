@@ -3,7 +3,7 @@ using Prism.Regions;
 using System.Collections.Specialized;
 using System.Windows;
 
-namespace HandyDragablz
+namespace EdgeDragablz
 {
     public class TabRegionAdapter : RegionAdapterBase<TabablzControl>
     {

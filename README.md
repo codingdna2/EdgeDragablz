@@ -3,7 +3,7 @@ A Mash Up of [HandyControl](https://github.com/HandyOrg/HandyControl) and [Draga
 
 ![Screenshot](Screenshots/sample1.png)
 
-### Usage
+### Usage (without Prism)
 
 1. Add reference to NuGet packages [HandyControl](https://www.nuget.org/packages/HandyControl) and [Dragablz](https://www.nuget.org/packages/HIT.Dragablz) (in this project I've used this [port](https://github.com/highway-it/Dragablz) to .NET Core)
 

@@ -111,7 +111,7 @@
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="MinHeight" Value="30"/>
-        <Setter Property="MinWidth" Value="90"/>
+        <Setter Property="MinWidth" Value="200"/>
 
         <Setter Property="Template">
             <Setter.Value>

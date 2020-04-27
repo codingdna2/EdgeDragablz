@@ -299,8 +299,8 @@
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="4" />
                                 </Grid.ColumnDefinitions>
 
                                 <!--  PREFIX  -->
@@ -362,7 +362,7 @@
                                 <!--  SUFFIX  -->
                                 <ContentControl x:Name="SuffixContentControl"
                                                 Grid.Column="3"
-                                                HorizontalAlignment="Left"
+                                                HorizontalAlignment="Stretch"
                                                 VerticalAlignment="Center"
                                                 Content="{TemplateBinding HeaderSuffixContent}"
                                                 ContentStringFormat="{TemplateBinding HeaderSuffixContentStringFormat}"

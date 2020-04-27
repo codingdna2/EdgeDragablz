@@ -14,14 +14,17 @@ namespace EdgeDragablz
     public class MainWindowViewModel : BindableBase
     {
         private readonly IRegionManager regionManager;
+        private bool isFullScreen;
 
         public MainWindowViewModel(IRegionManager regionManager)
         {
             this.regionManager = regionManager;
 
-            AddCommand = new DelegateCommand(() => { Navigate("Home"); });
+            AddCommand = new DelegateCommand(() => Navigate("Home"));
 
-            CloseAllCommand = new DelegateCommand(() => { this.regionManager.CloseAllTabs(); });
+            CloseAllCommand = new DelegateCommand(() => this.regionManager.CloseAllTabs());
+
+            SwitchFullScreenCommand = new DelegateCommand(() => IsFullScreen = !IsFullScreen);
 
             InterTabClient = new InterTabClient();
         }
@@ -31,6 +34,10 @@ namespace EdgeDragablz
         public ICommand AddCommand { get; }
 
         public ICommand CloseAllCommand { get; }
+
+        public ICommand SwitchFullScreenCommand { get; }
+
+        public bool IsFullScreen { get => isFullScreen; set => SetProperty(ref isFullScreen, value); }
 
         private void Navigate(string navigatePath)
         {

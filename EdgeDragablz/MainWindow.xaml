@@ -12,6 +12,7 @@
                  Width="800"
                  Height="450"
                  prism:ViewModelLocator.AutoWireViewModel="True"
+                 IsFullScreen="{Binding IsFullScreen}"
                  ShowTitle="False"
                  SnapsToDevicePixels="True"
                  UseLayoutRounding="True"
@@ -53,18 +54,53 @@
             <Setter Property="HeaderSuffixContent">
                 <Setter.Value>
                     <ContentControl>
-                        <Button VerticalAlignment="Stretch"
-                                Background="Transparent"
-                                Command="{Binding AddCommand}"
-                                Style="{StaticResource ButtonCustom}">
-                            <Button.Content>
-                                <Path Width="12"
-                                      Height="12"
-                                      Data="F1 M 80.000000 -42.500000 L 80.000000 -37.500000 L 42.500000 -37.500000 L 42.500000 0.000000 L 37.500000 0.000000 L 37.500000 -37.500000 L 0.000000 -37.500000 L 0.000000 -42.500000 L 37.500000 -42.500000 L 37.500000 -80.000000 L 42.500000 -80.000000 L 42.500000 -42.500000 Z "
-                                      Fill="{StaticResource PrimaryTextBrush}"
-                                      Stretch="Uniform" />
-                            </Button.Content>
-                        </Button>
+                        <Grid HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Button HorizontalAlignment="Left"
+                                    VerticalAlignment="Stretch"
+                                    Background="Transparent"
+                                    Command="{Binding AddCommand}"
+                                    Style="{StaticResource ButtonCustom}">
+                                <Button.Content>
+                                    <Path Width="12"
+                                          Height="12"
+                                          Data="F1 M 80.000000 -42.500000 L 80.000000 -37.500000 L 42.500000 -37.500000 L 42.500000 0.000000 L 37.500000 0.000000 L 37.500000 -37.500000 L 0.000000 -37.500000 L 0.000000 -42.500000 L 37.500000 -42.500000 L 37.500000 -80.000000 L 42.500000 -80.000000 L 42.500000 -42.500000 Z "
+                                          Fill="{StaticResource PrimaryTextBrush}"
+                                          Stretch="Uniform" />
+                                </Button.Content>
+                            </Button>
+                            <Button Grid.Column="2"
+                                    Margin="0,0,4,0"
+                                    Padding="0"
+                                    HorizontalAlignment="Right"
+                                    controls:IconElement.Geometry="{StaticResource FullScreenGeometry}"
+                                    controls:IconElement.Width="12"
+                                    Background="Transparent"
+                                    BorderBrush="Transparent"
+                                    Command="{Binding SwitchFullScreenCommand}"
+                                    DockPanel.Dock="Right"
+                                    Foreground="{StaticResource PrimaryTextBrush}"
+                                    Style="{StaticResource ButtonIcon}"
+                                    Visibility="{Binding IsFullScreen, Converter={StaticResource FalseBooleanToVisibilityConverter}}" />
+                            <Button Grid.Column="2"
+                                    Margin="0,0,4,0"
+                                    Padding="0"
+                                    HorizontalAlignment="Right"
+                                    controls:IconElement.Geometry="{StaticResource ExitFullScreenGeometry}"
+                                    controls:IconElement.Width="12"
+                                    Background="Transparent"
+                                    BorderBrush="Transparent"
+                                    Command="{Binding SwitchFullScreenCommand}"
+                                    DockPanel.Dock="Right"
+                                    Foreground="{StaticResource PrimaryTextBrush}"
+                                    Style="{StaticResource ButtonIcon}"
+                                    Visibility="{Binding IsFullScreen, Converter={StaticResource BooleanToVisibilityConverter}}" />
+
+                        </Grid>
+
                     </ContentControl>
                 </Setter.Value>
             </Setter>

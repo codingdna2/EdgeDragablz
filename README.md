@@ -1,4 +1,4 @@
-# HandyDragablz
+# EdgeDragablz
 A Mash Up of [HandyControl](https://github.com/HandyOrg/HandyControl) and [Dragablz](https://github.com/ButchersBoy/Dragablz)
 
 ![Screenshot](Screenshots/sample2.png)
@@ -50,7 +50,7 @@ Usage with Prism is fairly more complex. Please refer to sample code to correctl
 4. Add the following to `MainWindow.xaml`
 ```xaml
 <dragablz:TabablzControl x:Name="Tabs" prism:RegionManager.RegionName="{x:Static local:RegionHelper.RegionName}"
-                            Style="{StaticResource HandyTabablzStyle}" ShowDefaultCloseButton="True">
+                            Style="{StaticResource TabablzEdgeStyle}" ShowDefaultCloseButton="True">
         
     <dragablz:TabablzControl.InterTabController>
         <dragablz:InterTabController InterTabClient="{Binding InterTabClient}"/>
@@ -76,5 +76,5 @@ Usage with Prism is fairly more complex. Please refer to sample code to correctl
 
 ### Next developments
 
-1. Better integration of `ScrollViewer`
+1. Complete `DragablzItemsControl` style using `UniformGrid`
 2. Inclusion of `TabablzControl` in `NonClientAreaContent`

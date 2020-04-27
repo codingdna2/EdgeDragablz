@@ -21,7 +21,6 @@
             <Menu HorizontalAlignment="Left" Background="Transparent">
                 <MenuItem Header="Dragazbl">
                     <MenuItem Command="{Binding AddCommand}" Header="Add" />
-                    <MenuItem Command="{Binding RemoveCommand}" Header="Remove" />
                 </MenuItem>
             </Menu>
         </StackPanel>
@@ -29,8 +28,8 @@
 
     <Window.Resources>
         <Style TargetType="{x:Type dragablz:TabablzControl}" BasedOn="{StaticResource HandyTabablzStyle}" x:Key="TabStyle">
-            <Setter Property="HeaderPrefixContent" Value="PREFIX" />
-            <Setter Property="HeaderSuffixContent" Value="SUFFIX" />
+            <!--<Setter Property="HeaderPrefixContent" Value="PREFIX" />
+            <Setter Property="HeaderSuffixContent" Value="SUFFIX" />-->
         </Style>
     </Window.Resources>
 
@@ -43,21 +42,25 @@
         
         <dragablz:TabablzControl.HeaderItemTemplate>
             <DataTemplate DataType="{x:Type vm:DocumentViewModel}">
-                <StackPanel Orientation="Horizontal">
-                    <StackPanel.ContextMenu>
+                <Grid>
+                    <Grid.ContextMenu>
                         <ContextMenu>
                             <MenuItem Command="{x:Static dragablz:TabablzControl.CloseItemCommand}"/>
                             <MenuItem Command="{x:Static dragablz:TabablzControl.CloseOtherItemsCommand}"/>
-                            <MenuItem Header="Close all" Command="{Binding DataContext.CloseAllCommand, RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}}}"/>
+                            <MenuItem Header="Close all" Command="{Binding DataContext.CloseAllCommand, RelativeSource={RelativeSource AncestorType={x:Type controls:Window}}}"/>
                         </ContextMenu>
-                    </StackPanel.ContextMenu>
-
+                    </Grid.ContextMenu>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    
                     <Path Width="16" Height="15" Stretch="Uniform" Fill="Black" Margin="0,0,8,0">
                         <Path.Data>F1 M 80.000000 -75.000000 L 80.000000 -10.000000 L 0.000000 -10.000000 L 0.000000 -75.000000 Z M 5.000000 -70.000000 L 5.000000 -60.000000 L 75.000000 -60.000000 L 75.000000 -70.000000 Z M 75.000000 -15.000000 L 75.000000 -55.000000 L 5.000000 -55.000000 L 5.000000 -15.000000 Z M 10.000000 -45.000000 L 15.000000 -45.000000 L 15.000000 -20.000000 L 10.000000 -20.000000 Z M 20.000000 -30.000000 L 25.000000 -30.000000 L 25.000000 -20.000000 L 20.000000 -20.000000 Z M 30.000000 -35.000000 L 35.000000 -35.000000 L 35.000000 -20.000000 L 30.000000 -20.000000 Z M 40.000000 -50.000000 L 45.000000 -50.000000 L 45.000000 -20.000000 L 40.000000 -20.000000 Z M 60.000000 -45.000000 L 65.000000 -45.000000 L 65.000000 -20.000000 L 60.000000 -20.000000 Z M 50.000000 -35.000000 L 55.000000 -35.000000 L 55.000000 -20.000000 L 50.000000 -20.000000 Z</Path.Data>
                     </Path>
 
-                    <TextBlock Text="{Binding DataContext.Header}" MaxWidth="100" TextTrimming="CharacterEllipsis" ToolTip="{Binding DataContext.Header}" />
-                </StackPanel>
+                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding DataContext.Header}" MaxWidth="200" TextTrimming="CharacterEllipsis" ToolTip="{Binding DataContext.Header}" Grid.Column="1" />
+                </Grid>
             </DataTemplate>
         </dragablz:TabablzControl.HeaderItemTemplate>
                 

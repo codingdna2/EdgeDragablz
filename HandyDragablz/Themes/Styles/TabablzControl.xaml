@@ -6,6 +6,7 @@
     xmlns:dragablz="http://dragablz.net/winfx/xaml/dragablz">
 
     <converters:ShowDefaultCloseButtonConverter x:Key="ShowDefaultCloseButtonConverter" />
+    <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
 
     <Style x:Key="InvisibleThumbStyle" TargetType="{x:Type Thumb}">
         <Setter Property="Background" Value="Transparent"/>
@@ -194,14 +195,26 @@
                                 <RowDefinition Height="*" x:Name="RowDefinition1"/>
                             </Grid.RowDefinitions>
 
-                            <Border x:Name="contentPanel" Background="{DynamicResource RegionBrush}" Grid.Column="1" BorderThickness="0"
-                                    KeyboardNavigation.DirectionalNavigation="Contained" Grid.Row="1" KeyboardNavigation.TabNavigation="Local" KeyboardNavigation.TabIndex="2">
-                                <Grid x:Name="PART_ItemsHolder" Grid.Column="1" Grid.Row="1" Background="{DynamicResource SecondayRegionBrush}" Margin="0"/>
-                            </Border>
-
                             <Border Background="{TemplateBinding Background}" BorderThickness="0,0,0,1" Grid.Column="1" BorderBrush="{DynamicResource BorderBrush}" Name="PART_HeaderBorder" />
 
-                            <dragablz:DragablzItemsControl x:Name="PART_HeaderItemsControl" Grid.Column="1" 
+                            <Grid Grid.Column="1" Grid.Row="0" x:Name="HeaderContainerGrid" Visibility="{TemplateBinding IsHeaderPanelVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <!-- PREFIX -->
+                                <ContentControl Grid.Column="0" x:Name="PrefixContentControl" 
+                                            VerticalAlignment="Center"
+                                            Content="{TemplateBinding HeaderPrefixContent}"
+                                            ContentStringFormat="{TemplateBinding HeaderPrefixContentStringFormat}"
+                                            ContentTemplate="{TemplateBinding HeaderPrefixContentStringFormat}"
+                                            ContentTemplateSelector="{TemplateBinding HeaderPrefixContentTemplateSelector}"/>
+
+                                <!-- ITEMS CONTROL -->
+                                <dragablz:DragablzItemsControl x:Name="PART_HeaderItemsControl" Grid.Column="1" Background="Red"
                                                             ItemContainerStyle="{TemplateBinding ItemContainerStyle}" 
                                                             ItemTemplate="{TemplateBinding HeaderItemTemplate}"
                                                             ItemsSource="{Binding Items, RelativeSource={RelativeSource TemplatedParent}}" 
@@ -209,21 +222,47 @@
                                                             Style="{StaticResource HandyTabablzDragablzItemsControlStyle}" 
                                                             KeyboardNavigation.TabIndex="1" Panel.ZIndex="1">
 
-                                <!--<dragablz:DragablzItemsControl.MaxWidth>
-                                    <MultiBinding>
-                                        <MultiBinding.Converter>
-                                            <dragablz:TabablzHeaderSizeConverter Orientation="Horizontal"/>
-                                        </MultiBinding.Converter>
-                                        <Binding Path="ActualWidth" RelativeSource="{RelativeSource TemplatedParent}"/>
-                                        <Binding Path="ItemsPresenterWidth" RelativeSource="{RelativeSource Self}"/>
-                                        <Binding ElementName="PrefixContentControl" Path="ActualWidth"/>
-                                        <Binding ElementName="DefaultAddButton" Path="DesiredSize.Width"/>
-                                        <Binding ElementName="SuffixContentControl" Path="DesiredSize.Width"/>
-                                    </MultiBinding>
-                                </dragablz:DragablzItemsControl.MaxWidth>-->
-                            </dragablz:DragablzItemsControl>
+                                    <dragablz:DragablzItemsControl.MaxWidth>
+                                        <MultiBinding>
+                                            <MultiBinding.Converter>
+                                                <dragablz:TabablzHeaderSizeConverter Orientation="Horizontal"/>
+                                            </MultiBinding.Converter>
+                                            <Binding Path="ActualWidth" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                            <Binding Path="ItemsPresenterWidth" RelativeSource="{RelativeSource Self}"/>
+                                            <Binding ElementName="PrefixContentControl" Path="ActualWidth"/>
+                                            <Binding ElementName="DefaultAddButton" Path="DesiredSize.Width"/>
+                                            <Binding ElementName="SuffixContentControl" Path="DesiredSize.Width"/>
+                                        </MultiBinding>
+                                    </dragablz:DragablzItemsControl.MaxWidth>
+                                </dragablz:DragablzItemsControl>
 
-                            <!--<Button x:Name="DefaultAddButton" Command="{x:Static dragablz:TabablzControl.AddItemCommand}" Grid.Column="2" Style="{StaticResource AddItemCommandButtonStyle}" Visibility="{TemplateBinding ShowDefaultAddButton, Converter={StaticResource BooleanToVisibilityConverter}}"/>-->
+                                <!-- ADD BUTTON -->
+                                <Button Style="{StaticResource ButtonCustom}"
+                                    x:Name="DefaultAddButton"
+                                    Grid.Column="2"
+                                        Margin="8,0,8,0"
+                                    Command="{x:Static dragablz:TabablzControl.AddItemCommand}"
+                                    Visibility="{TemplateBinding ShowDefaultAddButton, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                    <Button.Content>
+                                        <Path Height="12" Width="12" Data="F1 M 80.000000 -42.500000 L 80.000000 -37.500000 L 42.500000 -37.500000 L 42.500000 0.000000 L 37.500000 0.000000 L 37.500000 -37.500000 L 0.000000 -37.500000 L 0.000000 -42.500000 L 37.500000 -42.500000 L 37.500000 -80.000000 L 42.500000 -80.000000 L 42.500000 -42.500000 Z " Fill="{StaticResource PrimaryTextBrush}" Stretch="Uniform" />
+                                    </Button.Content>
+                                </Button>
+
+                                <!-- SUFFIX -->
+                                <ContentControl Grid.Column="3" x:Name="SuffixContentControl" 
+                                            VerticalAlignment="Center"
+                                            Content="{TemplateBinding HeaderSuffixContent}"
+                                            ContentStringFormat="{TemplateBinding HeaderSuffixContentStringFormat}"
+                                            ContentTemplate="{TemplateBinding HeaderSuffixContentStringFormat}"
+                                            ContentTemplateSelector="{TemplateBinding HeaderSuffixContentTemplateSelector}"                                            
+                                            HorizontalAlignment="Stretch"
+                                            />
+                            </Grid>
+
+                            <Border x:Name="contentPanel" Background="{DynamicResource RegionBrush}" Grid.Column="1" BorderThickness="0"
+                                    KeyboardNavigation.DirectionalNavigation="Contained" Grid.Row="1" KeyboardNavigation.TabNavigation="Local" KeyboardNavigation.TabIndex="2">
+                                <Grid x:Name="PART_ItemsHolder" Grid.Column="1" Grid.Row="1" Background="{DynamicResource SecondayRegionBrush}" Margin="0"/>
+                            </Border>
 
                         </Grid>
                     </Border>
@@ -234,9 +273,9 @@
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="TextElement.Foreground" TargetName="templateRoot" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
                         </Trigger>
-                        <!--<Trigger Property="IsDraggingWindow" Value="True">
+                        <Trigger Property="IsDraggingWindow" Value="True">
                             <Setter Property="Visibility" TargetName="DefaultAddButton" Value="Collapsed"/>
-                        </Trigger>-->
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

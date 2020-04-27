@@ -1,6 +1,9 @@
-﻿using Dragablz;
+﻿using CommonServiceLocator;
+using Dragablz;
+using HandyDragablz.Views;
 using Prism.Commands;
 using Prism.Regions;
+using System;
 using System.Linq;
 using System.Windows.Input;
 
@@ -16,8 +19,6 @@ namespace HandyDragablz
 
             AddCommand = new DelegateCommand(() => { Navigate("Home"); });
 
-            RemoveCommand = new DelegateCommand(() => { });
-
             CloseAllCommand = new DelegateCommand(() => { this.regionManager.CloseAllTabs(); });
 
             InterTabClient = new InterTabClient();
@@ -27,9 +28,9 @@ namespace HandyDragablz
 
         public ICommand AddCommand { get; }
 
-        public ICommand RemoveCommand { get; }
-
         public ICommand CloseAllCommand { get; }
+
+        public static Func<HomeView> Factory => () => ServiceLocator.Current.GetInstance<HomeView>();
 
         private void Navigate(string navigatePath)
         {

@@ -3,10 +3,13 @@
                     xmlns:controls="https://handyorg.github.io/handycontrol"
                     xmlns:converters="clr-namespace:Dragablz.Converters;assembly=Dragablz"
                     xmlns:dragablz="http://dragablz.net/winfx/xaml/dragablz"
-                    xmlns:local="clr-namespace:HandyDragablz">
+                    xmlns:local="clr-namespace:HandyDragablz"
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
 
     <converters:ShowDefaultCloseButtonConverter x:Key="ShowDefaultCloseButtonConverter" />
     <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    <system:Double x:Key="HeaderHeight">30</system:Double>
+    <system:Double x:Key="HeaderButtonWidth">28</system:Double>
 
     <Style x:Key="InvisibleThumbStyle" TargetType="{x:Type Thumb}">
         <Setter Property="Background" Value="Transparent" />
@@ -25,6 +28,8 @@
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Padding" Value="0" />
         <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Height" Value="{StaticResource HeaderHeight}" />
+        <Setter Property="Width" Value="{StaticResource HeaderButtonWidth}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -147,7 +152,7 @@
         <Setter Property="Padding" Value="10,0,10,0" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="MinHeight" Value="30" />
+        <Setter Property="MinHeight" Value="{StaticResource HeaderHeight}" />
         <Setter Property="MinWidth" Value="180" />
 
         <Setter Property="Template">
@@ -197,7 +202,7 @@
                                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
 
                         <Button Grid.Column="2"
-                                Width="28"
+                                Width="{StaticResource HeaderButtonWidth}"
                                 Margin="-10,0,0,0"
                                 Background="Transparent"
                                 Command="{x:Static dragablz:TabablzControl.CloseItemCommand}"
@@ -329,7 +334,7 @@
                                 <!--  ADD BUTTON  -->
                                 <Button x:Name="DefaultAddButton"
                                         Grid.Column="2"
-                                        Width="28"
+                                        Width="{StaticResource HeaderButtonWidth}"
                                         Background="Transparent"
                                         Command="{x:Static dragablz:TabablzControl.AddItemCommand}"
                                         Style="{StaticResource ButtonCustom}"

@@ -44,9 +44,8 @@
             <Setter Property="HeaderSuffixContent">
                 <Setter.Value>
                     <ContentControl>
-                        <Button Width="28"
-                                Height="30"
-                                VerticalAlignment="Stretch"
+                        <Button VerticalAlignment="Stretch"
+                                Background="Transparent"
                                 Command="{Binding AddCommand}"
                                 Style="{StaticResource ButtonCustom}">
                             <Button.Content>

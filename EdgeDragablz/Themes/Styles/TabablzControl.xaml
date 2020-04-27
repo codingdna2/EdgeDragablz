@@ -9,7 +9,7 @@
     <converters:ShowDefaultCloseButtonConverter x:Key="ShowDefaultCloseButtonConverter" />
     <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     <system:Double x:Key="HeaderHeight">30</system:Double>
-    <system:Double x:Key="HeaderButtonWidth">28</system:Double>
+    <system:Double x:Key="HeaderButtonWidth">24</system:Double>
 
     <Style x:Key="InvisibleThumbStyle" TargetType="{x:Type Thumb}">
         <Setter Property="Background" Value="Transparent" />
@@ -176,7 +176,7 @@
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="MinHeight" Value="{StaticResource HeaderHeight}" />
-        <Setter Property="MaxWidth" Value="200" />
+        <Setter Property="MaxWidth" Value="180" />
 
         <Setter Property="Template">
             <Setter.Value>
@@ -300,7 +300,7 @@
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="4" />
+                                    <ColumnDefinition x:Name="ColumnMargin" Width="4" />
                                 </Grid.ColumnDefinitions>
 
                                 <!--  PREFIX  -->
@@ -337,6 +337,7 @@
                                             <Binding ElementName="PrefixContentControl" Path="ActualWidth" />
                                             <Binding ElementName="DefaultAddButton" Path="DesiredSize.Width" />
                                             <Binding ElementName="SuffixContentControl" Path="DesiredSize.Width" />
+                                            <Binding ElementName="ColumnMargin" Path="ActualWidth" />
                                         </MultiBinding>
                                     </dragablz:DragablzItemsControl.MaxWidth>
                                 </dragablz:DragablzItemsControl>
@@ -368,6 +369,7 @@
                                                 ContentStringFormat="{TemplateBinding HeaderSuffixContentStringFormat}"
                                                 ContentTemplate="{TemplateBinding HeaderSuffixContentStringFormat}"
                                                 ContentTemplateSelector="{TemplateBinding HeaderSuffixContentTemplateSelector}" />
+
                             </Grid>
 
                             <Border x:Name="contentPanel"

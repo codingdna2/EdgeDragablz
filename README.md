@@ -77,4 +77,4 @@ Usage with Prism is fairly more complex. Please refer to sample code to correctl
 ### Next developments
 
 1. Complete `DragablzItemsControl` style using `UniformGrid`
-2. Inclusion of `TabablzControl` in `NonClientAreaContent`
+2. Inclusion of `TabablzControl` in `NonClientAreaContent` (possible?)

@@ -178,6 +178,8 @@
         <Setter Property="Padding" Value="10,0,10,0" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Canvas.Left" Value="{Binding X, RelativeSource={RelativeSource Self}}" />
+        <Setter Property="Canvas.Top" Value="{Binding Y, RelativeSource={RelativeSource Self}}" />
         <Setter Property="MinHeight" Value="{StaticResource HeaderHeight}" />
         <Setter Property="MaxWidth" Value="180" />
 
@@ -218,7 +220,7 @@
 
                         <Button Grid.Column="1"
                                 Width="{StaticResource HeaderButtonWidth}"
-                                Margin="-10,0,0,0"
+                                Margin="-10,0,2,-1"
                                 HorizontalAlignment="Right"
                                 Background="Transparent"
                                 Command="{x:Static dragablz:TabablzControl.CloseItemCommand}"
@@ -232,8 +234,8 @@
                                     <Binding Path="LogicalIndex" RelativeSource="{RelativeSource TemplatedParent}" />
                                 </MultiBinding>
                             </Button.Visibility>
-                            <Path Width="8"
-                                  Height="8"
+                            <Path Width="9"
+                                  Height="9"
                                   Fill="{DynamicResource PrimaryTextBrush}"
                                   Style="{StaticResource ClosePathStyle}" />
                         </Button>

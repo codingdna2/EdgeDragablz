@@ -1,7 +1,9 @@
 ﻿using Dragablz;
 using EdgeDragablz.Views;
+using HandyControl.Data;
 using Prism.Ioc;
 using Prism.Regions;
+using System;
 using System.Windows;
 
 namespace EdgeDragablz
@@ -37,5 +39,24 @@ namespace EdgeDragablz
             var regionBehaviorFactory = Container.Resolve<IRegionBehaviorFactory>();
             regionAdapterMappings.RegisterMapping(typeof(TabablzControl), new TabRegionAdapter(regionBehaviorFactory));
         }
+
+        internal void UpdateSkin(SkinType skin)
+        {
+            Resources.MergedDictionaries.Clear();
+            Resources.MergedDictionaries.Add(new ResourceDictionary
+            {
+                Source = new Uri($"pack://application:,,,/HandyControl;component/Themes/Skin{skin}.xaml")
+            });
+            Resources.MergedDictionaries.Add(new ResourceDictionary
+            {
+                Source = new Uri("pack://application:,,,/HandyControl;component/Themes/Theme.xaml")
+            });
+            Resources.MergedDictionaries.Add(new ResourceDictionary
+            {
+                Source = new Uri("pack://application:,,,/Themes/Styles/TabablzControl.xaml")
+            });
+
+        }
+
     }
 }

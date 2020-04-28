@@ -19,8 +19,8 @@
                 Padding="0,0,0,0"
                 VerticalAlignment="Top"
                 Panel.ZIndex="1"
-                Background="{StaticResource RegionBrush}"
-                BorderBrush="{StaticResource SecondaryRegionBrush}"
+                Background="{DynamicResource RegionBrush}"
+                BorderBrush="{DynamicResource SecondaryRegionBrush}"
                 BorderThickness="0,0,0,1">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="2"
@@ -37,7 +37,7 @@
                         Background="Transparent"
                         BorderBrush="Transparent"
                         DockPanel.Dock="Left"
-                        Foreground="{StaticResource PrimaryTextBrush}"
+                        Foreground="{DynamicResource PrimaryTextBrush}"
                         IsEnabled="False"
                         Style="{StaticResource ButtonIcon}" />
                 <Button Margin="0,0,8,0"
@@ -47,25 +47,25 @@
                         Background="Transparent"
                         BorderBrush="Transparent"
                         DockPanel.Dock="Right"
-                        Foreground="{StaticResource PrimaryTextBrush}"
+                        Foreground="{DynamicResource PrimaryTextBrush}"
                         Style="{StaticResource ButtonIcon}" />
                 <Button HorizontalAlignment="Right"
                         controls:IconElement.Geometry="{StaticResource SaveGeometry}"
                         Background="Transparent"
                         BorderBrush="Transparent"
                         DockPanel.Dock="Right"
-                        Foreground="{StaticResource PrimaryTextBrush}" />
+                        Foreground="{DynamicResource PrimaryTextBrush}" />
                 <Button HorizontalAlignment="Right"
                         controls:IconElement.Geometry="{StaticResource DeleteGeometry}"
                         Background="Transparent"
                         BorderBrush="Transparent"
                         DockPanel.Dock="Right"
-                        Foreground="{StaticResource PrimaryTextBrush}" />
+                        Foreground="{DynamicResource PrimaryTextBrush}" />
             </DockPanel>
         </Border>
         <Grid Grid.Row="1"
               VerticalAlignment="Stretch"
-              Background="{StaticResource SecondaryRegionBrush}" />
+              Background="{DynamicResource SecondaryRegionBrush}" />
 
     </Grid>
 </UserControl>

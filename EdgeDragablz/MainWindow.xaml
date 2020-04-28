@@ -19,13 +19,48 @@
                  mc:Ignorable="d">
 
     <controls:Window.NonClientAreaContent>
-        <DockPanel>
-            <Button HorizontalAlignment="Right"
+        <DockPanel Height="29">
+            <Button Name="ButtonConfig"
+                    HorizontalAlignment="Right"
                     controls:IconElement.Geometry="{StaticResource SettingsGeometry}"
                     controls:IconElement.Height="16"
-                    Background="Transparent"
-                    BorderBrush="Transparent"
-                    Foreground="Black" />
+                    Click="ButtonConfig_OnClick"
+                    DockPanel.Dock="Right"
+                    Foreground="{DynamicResource PrimaryTextBrush}"
+                    Style="{StaticResource ButtonIcon}" />
+            <Popup Name="PopupConfig"
+                   Grid.Column="1"
+                   AllowsTransparency="True"
+                   HorizontalOffset="-25"
+                   PlacementTarget="{Binding ElementName=ButtonConfig}"
+                   StaysOpen="False"
+                   VerticalOffset="6">
+                <Border Margin="16"
+                        Background="{DynamicResource SecondaryRegionBrush}"
+                        CornerRadius="4"
+                        Effect="{StaticResource EffectShadow2}">
+                    <StackPanel Margin="5" Button.Click="ButtonSkins_OnClick">
+                        <Button Style="{StaticResource ButtonCustom}" Tag="{x:Static controls:SkinType.Default}">
+                            <Border Width="36"
+                                    Height="21"
+                                    Background="White"
+                                    BorderBrush="{DynamicResource BorderBrush}"
+                                    BorderThickness="1"
+                                    CornerRadius="2" />
+                        </Button>
+                        <Button Margin="0,0,0,0"
+                                Style="{StaticResource ButtonCustom}"
+                                Tag="{x:Static controls:SkinType.Dark}">
+                            <Border Width="36"
+                                    Height="21"
+                                    Background="Black"
+                                    BorderBrush="{DynamicResource BorderBrush}"
+                                    BorderThickness="1"
+                                    CornerRadius="2" />
+                        </Button>
+                    </StackPanel>
+                </Border>
+            </Popup>
         </DockPanel>
     </controls:Window.NonClientAreaContent>
 
@@ -36,13 +71,11 @@
             <Setter Property="HeaderPrefixContent">
                 <Setter.Value>
                     <ContentControl>
-                        <Button Width="35"
-                                FocusVisualStyle="{x:Null}"
-                                Style="{StaticResource ButtonCustom}">
+                        <Button Width="35" Style="{StaticResource ButtonCustom}">
                             <Path Width="16"
                                   Height="15"
                                   Data="F1 M 80.000000 -55.000000 L 0.000000 -55.000000 L 0.000000 -60.000000 L 80.000000 -60.000000 L 80.000000 -55.000000 Z M 80.000000 -15.000000 L 0.000000 -15.000000 L 0.000000 -20.000000 L 80.000000 -20.000000 L 80.000000 -15.000000 Z M 80.000000 -35.000000 L 0.000000 -35.000000 L 0.000000 -40.000000 L 80.000000 -40.000000 L 80.000000 -35.000000 Z "
-                                  Fill="{StaticResource PrimaryTextBrush}"
+                                  Fill="{DynamicResource PrimaryTextBrush}"
                                   Stretch="Uniform" />
                         </Button>
                     </ContentControl>
@@ -67,7 +100,7 @@
                                     controls:IconElement.Geometry="{StaticResource AddGeometry}"
                                     controls:IconElement.Width="12"
                                     Command="{Binding AddCommand}"
-                                    Foreground="{StaticResource PrimaryTextBrush}"
+                                    Foreground="{DynamicResource PrimaryTextBrush}"
                                     Style="{StaticResource ButtonIcon}" />
                             <Button Grid.Column="2"
                                     Width="{StaticResource HeaderButtonWidth}"
@@ -78,7 +111,7 @@
                                     controls:IconElement.Width="12"
                                     Command="{Binding SwitchFullScreenCommand}"
                                     DockPanel.Dock="Right"
-                                    Foreground="{StaticResource PrimaryTextBrush}"
+                                    Foreground="{DynamicResource PrimaryTextBrush}"
                                     Style="{StaticResource ButtonIcon}"
                                     Visibility="{Binding IsFullScreen, Converter={StaticResource FalseBooleanToVisibilityConverter}}" />
                             <Button Grid.Column="2"
@@ -90,7 +123,7 @@
                                     controls:IconElement.Width="12"
                                     Command="{Binding SwitchFullScreenCommand}"
                                     DockPanel.Dock="Right"
-                                    Foreground="{StaticResource PrimaryTextBrush}"
+                                    Foreground="{DynamicResource PrimaryTextBrush}"
                                     Style="{StaticResource ButtonIcon}"
                                     Visibility="{Binding IsFullScreen, Converter={StaticResource BooleanToVisibilityConverter}}" />
 
@@ -133,7 +166,7 @@
                               Height="15"
                               Margin="0,0,8,0"
                               Data="F1 M 80.000000 -75.000000 L 80.000000 -10.000000 L 0.000000 -10.000000 L 0.000000 -75.000000 Z M 5.000000 -70.000000 L 5.000000 -60.000000 L 75.000000 -60.000000 L 75.000000 -70.000000 Z M 75.000000 -15.000000 L 75.000000 -55.000000 L 5.000000 -55.000000 L 5.000000 -15.000000 Z M 10.000000 -45.000000 L 15.000000 -45.000000 L 15.000000 -20.000000 L 10.000000 -20.000000 Z M 20.000000 -30.000000 L 25.000000 -30.000000 L 25.000000 -20.000000 L 20.000000 -20.000000 Z M 30.000000 -35.000000 L 35.000000 -35.000000 L 35.000000 -20.000000 L 30.000000 -20.000000 Z M 40.000000 -50.000000 L 45.000000 -50.000000 L 45.000000 -20.000000 L 40.000000 -20.000000 Z M 60.000000 -45.000000 L 65.000000 -45.000000 L 65.000000 -20.000000 L 60.000000 -20.000000 Z M 50.000000 -35.000000 L 55.000000 -35.000000 L 55.000000 -20.000000 L 50.000000 -20.000000 Z"
-                              Fill="Black"
+                              Fill="{DynamicResource PrimaryTextBrush}"
                               Stretch="Uniform" />
 
                         <TextBlock Grid.Column="1"

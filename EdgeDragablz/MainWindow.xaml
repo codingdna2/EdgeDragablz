@@ -1,82 +1,41 @@
-﻿<controls:Window x:Class="EdgeDragablz.MainWindow"
-                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                 xmlns:controls="https://handyorg.github.io/handycontrol"
-                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-                 xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
-                 xmlns:local="clr-namespace:EdgeDragablz"
-                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                 xmlns:prism="http://prismlibrary.com/"
-                 xmlns:vm="clr-namespace:EdgeDragablz.ViewModels"
-                 Title="MainWindow"
-                 Width="800"
-                 Height="450"
-                 prism:ViewModelLocator.AutoWireViewModel="True"
-                 IsFullScreen="{Binding IsFullScreen}"
-                 ShowTitle="False"
-                 SnapsToDevicePixels="True"
-                 UseLayoutRounding="True"
-                 mc:Ignorable="d">
+﻿<controls:Window
+    x:Class="EdgeDragablz.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Views="clr-namespace:EdgeDragablz.Views"
+    xmlns:controls="https://handyorg.github.io/handycontrol"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
+    xmlns:local="clr-namespace:EdgeDragablz"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mvvm="clr-namespace:EdgeDragablz.Mvvm"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:vm="clr-namespace:EdgeDragablz.ViewModels"
+    Title="MainWindow"
+    Width="800"
+    Height="450"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    IsFullScreen="{Binding IsFullScreen}"
+    ShowTitle="False"
+    SnapsToDevicePixels="True"
+    UseLayoutRounding="True"
+    mc:Ignorable="d">
 
-    <controls:Window.NonClientAreaContent>
-        <DockPanel Height="29">
-            <Button Name="ButtonConfig"
-                    HorizontalAlignment="Right"
-                    controls:IconElement.Geometry="{StaticResource SettingsGeometry}"
-                    controls:IconElement.Height="16"
-                    Click="ButtonConfig_OnClick"
-                    DockPanel.Dock="Right"
-                    Foreground="{DynamicResource PrimaryTextBrush}"
-                    Style="{StaticResource ButtonIcon}" />
-            <Popup Name="PopupConfig"
-                   Grid.Column="1"
-                   AllowsTransparency="True"
-                   HorizontalOffset="-25"
-                   PlacementTarget="{Binding ElementName=ButtonConfig}"
-                   StaysOpen="False"
-                   VerticalOffset="6">
-                <Border Margin="16"
-                        Background="{DynamicResource SecondaryRegionBrush}"
-                        CornerRadius="4"
-                        Effect="{StaticResource EffectShadow2}">
-                    <StackPanel Margin="5" Button.Click="ButtonSkins_OnClick">
-                        <Button Style="{StaticResource ButtonCustom}" Tag="{x:Static controls:SkinType.Default}">
-                            <Border Width="36"
-                                    Height="21"
-                                    Background="White"
-                                    BorderBrush="{DynamicResource BorderBrush}"
-                                    BorderThickness="1"
-                                    CornerRadius="2" />
-                        </Button>
-                        <Button Margin="0,0,0,0"
-                                Style="{StaticResource ButtonCustom}"
-                                Tag="{x:Static controls:SkinType.Dark}">
-                            <Border Width="36"
-                                    Height="21"
-                                    Background="Black"
-                                    BorderBrush="{DynamicResource BorderBrush}"
-                                    BorderThickness="1"
-                                    CornerRadius="2" />
-                        </Button>
-                    </StackPanel>
-                </Border>
-            </Popup>
-        </DockPanel>
-    </controls:Window.NonClientAreaContent>
-
-    <Window.Resources>
-        <Style x:Key="TabStyle"
-               BasedOn="{StaticResource TabablzEdgeStyle}"
-               TargetType="{x:Type dragablz:TabablzControl}">
+    <controls:Window.Resources>
+        <Style
+            x:Key="TabStyle"
+            BasedOn="{StaticResource TabablzEdgeStyle}"
+            TargetType="{x:Type dragablz:TabablzControl}">
             <Setter Property="HeaderPrefixContent">
                 <Setter.Value>
                     <ContentControl>
                         <Button Width="35" Style="{StaticResource ButtonCustom}">
-                            <Path Width="16"
-                                  Height="15"
-                                  Data="F1 M 80.000000 -55.000000 L 0.000000 -55.000000 L 0.000000 -60.000000 L 80.000000 -60.000000 L 80.000000 -55.000000 Z M 80.000000 -15.000000 L 0.000000 -15.000000 L 0.000000 -20.000000 L 80.000000 -20.000000 L 80.000000 -15.000000 Z M 80.000000 -35.000000 L 0.000000 -35.000000 L 0.000000 -40.000000 L 80.000000 -40.000000 L 80.000000 -35.000000 Z "
-                                  Fill="{DynamicResource PrimaryTextBrush}"
-                                  Stretch="Uniform" />
+                            <Path
+                                Width="16"
+                                Height="15"
+                                Data="F1 M 80.000000 -55.000000 L 0.000000 -55.000000 L 0.000000 -60.000000 L 80.000000 -60.000000 L 80.000000 -55.000000 Z M 80.000000 -15.000000 L 0.000000 -15.000000 L 0.000000 -20.000000 L 80.000000 -20.000000 L 80.000000 -15.000000 Z M 80.000000 -35.000000 L 0.000000 -35.000000 L 0.000000 -40.000000 L 80.000000 -40.000000 L 80.000000 -35.000000 Z "
+                                Fill="{DynamicResource PrimaryTextBrush}"
+                                Stretch="Uniform" />
                         </Button>
                     </ContentControl>
                 </Setter.Value>
@@ -84,51 +43,55 @@
             <Setter Property="HeaderSuffixContent">
                 <Setter.Value>
                     <ContentControl>
-                        <Grid Margin="-2,0,2,0"
-                              HorizontalAlignment="Stretch"
-                              Background="Transparent">
+                        <Grid
+                            Margin="-2,0,2,0"
+                            HorizontalAlignment="Stretch"
+                            Background="Transparent">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
-                            <Button Width="{StaticResource HeaderButtonWidth}"
-                                    Margin="2,0,-4,0"
-                                    Padding="0"
-                                    HorizontalAlignment="Left"
-                                    VerticalAlignment="Stretch"
-                                    controls:IconElement.Geometry="{StaticResource AddGeometry}"
-                                    controls:IconElement.Width="12"
-                                    Command="{Binding AddCommand}"
-                                    FocusVisualStyle="{x:Null}"
-                                    Foreground="{DynamicResource PrimaryTextBrush}"
-                                    Style="{StaticResource ButtonIcon}" />
-                            <Button Grid.Column="2"
-                                    Width="{StaticResource HeaderButtonWidth}"
-                                    Margin="0,0,4,0"
-                                    Padding="0"
-                                    FocusVisualStyle="{x:Null}"
-                                    HorizontalAlignment="Right"
-                                    controls:IconElement.Geometry="{StaticResource FullScreenGeometry}"
-                                    controls:IconElement.Width="12"
-                                    Command="{Binding SwitchFullScreenCommand}"
-                                    DockPanel.Dock="Right"
-                                    Foreground="{DynamicResource PrimaryTextBrush}"
-                                    Style="{StaticResource ButtonIcon}"
-                                    Visibility="{Binding IsFullScreen, Converter={StaticResource FalseBooleanToVisibilityConverter}}" />
-                            <Button Grid.Column="2"
-                                    Width="{StaticResource HeaderButtonWidth}"
-                                    Margin="0,0,4,0"
-                                    Padding="0"
-                                    FocusVisualStyle="{x:Null}"
-                                    HorizontalAlignment="Right"
-                                    controls:IconElement.Geometry="{StaticResource ExitFullScreenGeometry}"
-                                    controls:IconElement.Width="12"
-                                    Command="{Binding SwitchFullScreenCommand}"
-                                    DockPanel.Dock="Right"
-                                    Foreground="{DynamicResource PrimaryTextBrush}"
-                                    Style="{StaticResource ButtonIcon}"
-                                    Visibility="{Binding IsFullScreen, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                            <Button
+                                Width="{StaticResource HeaderButtonWidth}"
+                                Margin="2,0,-4,0"
+                                Padding="0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Stretch"
+                                controls:IconElement.Geometry="{StaticResource AddGeometry}"
+                                controls:IconElement.Width="12"
+                                Command="{Binding AddCommand}"
+                                FocusVisualStyle="{x:Null}"
+                                Foreground="{DynamicResource PrimaryTextBrush}"
+                                Style="{StaticResource ButtonIcon}" />
+                            <Button
+                                Grid.Column="2"
+                                Width="{StaticResource HeaderButtonWidth}"
+                                Margin="0,0,4,0"
+                                Padding="0"
+                                HorizontalAlignment="Right"
+                                controls:IconElement.Geometry="{StaticResource FullScreenGeometry}"
+                                controls:IconElement.Width="12"
+                                Command="{Binding SwitchFullScreenCommand}"
+                                DockPanel.Dock="Right"
+                                FocusVisualStyle="{x:Null}"
+                                Foreground="{DynamicResource PrimaryTextBrush}"
+                                Style="{StaticResource ButtonIcon}"
+                                Visibility="{Binding IsFullScreen, Converter={StaticResource FalseBooleanToVisibilityConverter}}" />
+                            <Button
+                                Grid.Column="2"
+                                Width="{StaticResource HeaderButtonWidth}"
+                                Margin="0,0,4,0"
+                                Padding="0"
+                                HorizontalAlignment="Right"
+                                controls:IconElement.Geometry="{StaticResource ExitFullScreenGeometry}"
+                                controls:IconElement.Width="12"
+                                Command="{Binding SwitchFullScreenCommand}"
+                                DockPanel.Dock="Right"
+                                FocusVisualStyle="{x:Null}"
+                                Foreground="{DynamicResource PrimaryTextBrush}"
+                                Style="{StaticResource ButtonIcon}"
+                                Visibility="{Binding IsFullScreen, Converter={StaticResource BooleanToVisibilityConverter}}" />
 
                         </Grid>
 
@@ -136,13 +99,68 @@
                 </Setter.Value>
             </Setter>
         </Style>
-    </Window.Resources>
+
+        <mvvm:BindingProxy x:Key="Proxy" Data="{Binding}" />
+    </controls:Window.Resources>
+
+    <controls:Window.NonClientAreaContent>
+        <DockPanel Height="29">
+            <Button
+                x:Name="ButtonConfig"
+                HorizontalAlignment="Right"
+                controls:IconElement.Geometry="{StaticResource SettingsGeometry}"
+                controls:IconElement.Height="16"
+                Click="ButtonConfig_OnClick"
+                DockPanel.Dock="Right"
+                Foreground="{DynamicResource PrimaryTextBrush}"
+                Style="{StaticResource ButtonIcon}" />
+            <Popup
+                x:Name="PopupConfig"
+                Grid.Column="1"
+                AllowsTransparency="True"
+                HorizontalOffset="-25"
+                PlacementTarget="{Binding ElementName=ButtonConfig}"
+                StaysOpen="False"
+                VerticalOffset="6">
+                <Border
+                    Margin="16"
+                    Background="{DynamicResource SecondaryRegionBrush}"
+                    CornerRadius="4"
+                    Effect="{StaticResource EffectShadow2}">
+                    <StackPanel Margin="5" ButtonBase.Click="ButtonSkins_OnClick">
+                        <Button Style="{StaticResource ButtonCustom}" Tag="{x:Static controls:SkinType.Default}">
+                            <Border
+                                Width="36"
+                                Height="21"
+                                Background="White"
+                                BorderBrush="{DynamicResource BorderBrush}"
+                                BorderThickness="1"
+                                CornerRadius="2" />
+                        </Button>
+                        <Button
+                            Margin="0,0,0,0"
+                            Style="{StaticResource ButtonCustom}"
+                            Tag="{x:Static controls:SkinType.Dark}">
+                            <Border
+                                Width="36"
+                                Height="21"
+                                Background="Black"
+                                BorderBrush="{DynamicResource BorderBrush}"
+                                BorderThickness="1"
+                                CornerRadius="2" />
+                        </Button>
+                    </StackPanel>
+                </Border>
+            </Popup>
+        </DockPanel>
+    </controls:Window.NonClientAreaContent>
 
     <Grid>
-        <dragablz:TabablzControl x:Name="Tabs"
-                                 prism:RegionManager.RegionName="{x:Static local:RegionHelper.RegionName}"
-                                 ShowDefaultCloseButton="True"
-                                 Style="{StaticResource TabStyle}">
+        <dragablz:TabablzControl
+            x:Name="Tabs"
+            prism:RegionManager.RegionName="{x:Static local:RegionHelper.RegionName}"
+            ShowDefaultCloseButton="True"
+            Style="{StaticResource TabStyle}">
 
             <dragablz:TabablzControl.InterTabController>
                 <dragablz:InterTabController InterTabClient="{Binding InterTabClient}" />
@@ -156,7 +174,7 @@
                             <ContextMenu>
                                 <MenuItem Command="{x:Static dragablz:TabablzControl.CloseItemCommand}" />
                                 <MenuItem Command="{x:Static dragablz:TabablzControl.CloseOtherItemsCommand}" />
-                                <MenuItem Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=DataContext.CloseAllCommand}" Header="Close all" />
+                                <MenuItem Command="{Binding Data.CloseAllCommand, Source={StaticResource Proxy}}" Header="Close all" />
                             </ContextMenu>
                         </Grid.ContextMenu>
 
@@ -165,19 +183,21 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
 
-                        <Path Width="16"
-                              Height="15"
-                              Margin="0,0,8,0"
-                              Data="F1 M 80.000000 -75.000000 L 80.000000 -10.000000 L 0.000000 -10.000000 L 0.000000 -75.000000 Z M 5.000000 -70.000000 L 5.000000 -60.000000 L 75.000000 -60.000000 L 75.000000 -70.000000 Z M 75.000000 -15.000000 L 75.000000 -55.000000 L 5.000000 -55.000000 L 5.000000 -15.000000 Z M 10.000000 -45.000000 L 15.000000 -45.000000 L 15.000000 -20.000000 L 10.000000 -20.000000 Z M 20.000000 -30.000000 L 25.000000 -30.000000 L 25.000000 -20.000000 L 20.000000 -20.000000 Z M 30.000000 -35.000000 L 35.000000 -35.000000 L 35.000000 -20.000000 L 30.000000 -20.000000 Z M 40.000000 -50.000000 L 45.000000 -50.000000 L 45.000000 -20.000000 L 40.000000 -20.000000 Z M 60.000000 -45.000000 L 65.000000 -45.000000 L 65.000000 -20.000000 L 60.000000 -20.000000 Z M 50.000000 -35.000000 L 55.000000 -35.000000 L 55.000000 -20.000000 L 50.000000 -20.000000 Z"
-                              Fill="{DynamicResource PrimaryTextBrush}"
-                              Stretch="Uniform" />
+                        <Path
+                            Width="16"
+                            Height="15"
+                            Margin="0,0,8,0"
+                            Data="F1 M 80.000000 -75.000000 L 80.000000 -10.000000 L 0.000000 -10.000000 L 0.000000 -75.000000 Z M 5.000000 -70.000000 L 5.000000 -60.000000 L 75.000000 -60.000000 L 75.000000 -70.000000 Z M 75.000000 -15.000000 L 75.000000 -55.000000 L 5.000000 -55.000000 L 5.000000 -15.000000 Z M 10.000000 -45.000000 L 15.000000 -45.000000 L 15.000000 -20.000000 L 10.000000 -20.000000 Z M 20.000000 -30.000000 L 25.000000 -30.000000 L 25.000000 -20.000000 L 20.000000 -20.000000 Z M 30.000000 -35.000000 L 35.000000 -35.000000 L 35.000000 -20.000000 L 30.000000 -20.000000 Z M 40.000000 -50.000000 L 45.000000 -50.000000 L 45.000000 -20.000000 L 40.000000 -20.000000 Z M 60.000000 -45.000000 L 65.000000 -45.000000 L 65.000000 -20.000000 L 60.000000 -20.000000 Z M 50.000000 -35.000000 L 55.000000 -35.000000 L 55.000000 -20.000000 L 50.000000 -20.000000 Z"
+                            Fill="{DynamicResource PrimaryTextBrush}"
+                            Stretch="Uniform" />
 
-                        <TextBlock Grid.Column="1"
-                                   MaxWidth="200"
-                                   HorizontalAlignment="Stretch"
-                                   Text="{Binding DataContext.Header}"
-                                   TextTrimming="CharacterEllipsis"
-                                   ToolTip="{Binding DataContext.Header}" />
+                        <TextBlock
+                            Grid.Column="1"
+                            MaxWidth="200"
+                            HorizontalAlignment="Stretch"
+                            Text="{Binding DataContext.Header}"
+                            TextTrimming="CharacterEllipsis"
+                            ToolTip="{Binding DataContext.Header}" />
                     </Grid>
                 </DataTemplate>
             </dragablz:TabablzControl.HeaderItemTemplate>

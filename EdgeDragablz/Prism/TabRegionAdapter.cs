@@ -63,16 +63,19 @@ namespace EdgeDragablz
             {
                 if (regionMemberLifetime.KeepAlive)
                 {
-                    region.Deactivate(item);
+                    if (region.ActiveViews.Contains(item))
+                        region.Deactivate(item);
                 }
                 else
                 {
-                    region.Remove(item);
+                    if (region.ActiveViews.Contains(item))
+                        region.Remove(item);
                 }
             }
             else
             {
-                region.Remove(item);
+                if (region.ActiveViews.Contains(item))
+                    region.Remove(item);
             }
         }
 

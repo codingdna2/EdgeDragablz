@@ -74,6 +74,9 @@ Usage with Prism is fairly more complex. Please refer to sample code to correctl
 </dragablz:TabablzControl>
 ```
 
+### Issues
+De-registration of region is not happening correctly when tab is teared-off
+
 ### Next developments
 
 1. Complete `DragablzItemsControl` style using `UniformGrid`
